@@ -3,6 +3,7 @@ from itertools import ifilterfalse
 # from stemming.porter2 import stem
 from nltk.stem import WordNetLemmatizer
 import nltk
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 ####################################################################################################################
@@ -103,5 +104,17 @@ def word_Lemmantization(wordList,wordNetLemma):
 		wordList[i] =wordNetLemma.lemmatize(word)
  	
 	return wordList
+    
+#
+def getBagOfWords(corpus):
+    vectorizer = CountVectorizer(min_df=2)
+    X = vectorizer.fit_transform(corpus)
+    print "labels are:"
+    print vectorizer.get_feature_names()
+    return X.toarray()
+    
+ 
+         
+
 
         
