@@ -23,6 +23,8 @@ from sklearn.cross_validation import train_test_split
 from sklearn.cross_validation import KFold
 from sklearn import cross_validation
 
+from sklearn.ensemble import RandomForestClassifier
+
 
 
 from nltk.collocations import* 
@@ -36,26 +38,60 @@ from FormatFeatures import *
 from logger import *
 
 from sklearn.cross_validation import KFold
+result_log = open("result_log.csv","a")
 
 def RunCrossValidation2(X, Y, modelName,k):
 	listOfAccrate = []
+	trainCorpus = []
+	
 	kf = KFold(len(Y), k, shuffle =True)
 	for train_index, test_index in kf:
-		X_train,X_test = X[train_index],X[test_index]
+		train_feat_index = []
+		test_feat_index = []
+		index=0;
+		result_log.write(str("***************log*************************"+"\n"))
+		trainCorpus = []
+
+		for i in train_index:
+			#print i
+			train_feat_index.append(index)
+			trainCorpus.append(X[i])
+			index = index+1
+		#result_log.write(str("training Corpus: "+str(trainCorpus)+"\n"))
+		
+		vect = fitCorpus(trainCorpus)
+		#print "training indexes"
+		#print train_feat_index
+		for i in test_index:
+			#print i
+			test_feat_index.append(index)
+			trainCorpus.append(X[i])
+			index = index +1
+		#print "testing indexes"
+		#print test_feat_index
+# 		result_log.write(str("whole Corpus: "+str(trainCorpus)+"\n"))
+		feat = tranCorpus(trainCorpus,vect)
+		#result_log.write(str("Feature Matrix: "+str(feat)+"\n"))
+		#print train_index
+		#print test_index
+		X_train,X_test = feat[train_feat_index],feat[test_feat_index]
 		y_train,y_test = Y[train_index],Y[test_index]
+# 		result_log.write(str("X_training: "+str(X_train)+"\n"))
+# 		result_log.write(str("Y_training: "+str(y_train)+"\n"))
+# 		result_log.write(str("X_testing: "+str(X_test)+"\n"))
+# 		result_log.write(str("Y_testing: "+str(y_test)+"\n"))
+		
 		modelName.fit(X_train,y_train)
 		y_predict = modelName.predict(X_test)
+		#result_log.write(str("Y_prediction: "+str(y_predict)+"\n"))
 		cm = confusion_matrix(y_test, y_predict)
 		cm_num = np.array(cm)
-		print "Confusion Matrix: "
-		print cm_num
-		print "sum of diagonal =",+np.trace(cm)
-		print "sum of all CM =",+np.sum(cm)
- 
-		print "Classifier Accuracy ="
-		
+		result_log.write(str("Confusion Matrix: "+str(cm_num)+"\n"))
+		result_log.write(str("sum of diagonal = "+str(np.trace(cm))+"\n"))
+		result_log.write(str("sum of all CM = "+str(np.sum(cm))+"\n"))
 		accRate = float((float(np.trace(cm))/float(np.sum(cm)))) * 100
-		print accRate
+		result_log.write(str("Classifier Accuracy = " +str(accRate)+"\n"))
+ 
 		listOfAccrate.append(accRate)
 
 	listOfAccrate = np.array(listOfAccrate)
@@ -170,8 +206,8 @@ for line in trainfile:
     
     X.append(reviewData)
 
-#    if(iCount == 100):
-#        break  
+#     if(iCount == 100):
+#         break  
     
    # X_train.append(features)
     if(iCount % 100==0):
@@ -182,15 +218,15 @@ for line in trainfile:
 trainfile.close()
 
 print corpus
-bagofwrd = getBagOfWords(corpus)
-print bagofwrd
-
-#print reviewData
-print X
+# bagofwrd = getBagOfWords(corpus)
+# print bagofwrd
+# 
+# #print reviewData
+# print X
 print y
-print "\t Data loaded succesfull: # of rows: ",len(X), " # of Columns: ",len(X[0])," Length of labels: ",len(y)
-#
-print "\t Time is: "+str(time.time()-start_time)+"\n"
+# print "\t Data loaded succesfull: # of rows: ",len(X), " # of Columns: ",len(X[0])," Length of labels: ",len(y)
+# #
+# print "\t Time is: "+str(time.time()-start_time)+"\n"
 
 
 
@@ -223,21 +259,25 @@ print "\t Time is: "+str(time.time()-start_time)+"\n"
 # print len(y_test)
 
 # Run classifier
-classifier = svm.SVC(kernel='linear')
-
+clf_svm = svm.SVC(kernel='linear')
+# 
 gnb = BernoulliNB();
-
-x= np.array(bagofwrd)
+# 
+# x= np.array(bagofwrd)
 y= np.array(y)
 
+clf_rf = RandomForestClassifier(n_estimators=100)
 
-np_mean =RunCrossValidation2(x, y, gnb,10)
-print "Accuracy means (NB) ="
-print np_mean
+clf_maxEnt = linear_model.LogisticRegression(penalty='l2')
+
+
+# np_mean =RunCrossValidation2(x, y, gnb,10)
+# print "Accuracy means (NB) ="
+# print np_mean
 
 print "*******************"
-np_mean =RunCrossValidation2(x, y, classifier,10)
-print "Accuracy means (SVM)="
+np_mean =RunCrossValidation2(corpus, y, clf_maxEnt,5)
+print "Accuracy means (maxEnt)="
 print np_mean
 
 #classifier.fit(X_train, y_train)
