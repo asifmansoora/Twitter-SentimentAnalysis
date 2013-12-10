@@ -1,0 +1,264 @@
+***************log*************************
+Time logged :2013-12-04 20:16:42
+Training Data Processed
+Corpus without Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+NB - Bernoulli Model learned
+Random forest Model (tree = 25) learned
+Maximum Entopy Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[64 18]
+ [ 0 58]]
+Classifier Accuracy = 87.1428571429
+Precision for Cessation Data: 0.763157894737
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.865671641791
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.780487804878
+F-Score for No Cessation Data: 0.876712328767
+******************************
+Classifier result for NB
+Confusion Matrix: [[ 1 81]
+ [ 0 58]]
+Classifier Accuracy = 42.1428571429
+Precision for Cessation Data: 0.41726618705
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.58883248731
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.0121951219512
+F-Score for No Cessation Data: 0.0240963855422
+******************************
+Classifier result for SVM
+Confusion Matrix: [[36 46]
+ [ 0 58]]
+Classifier Accuracy = 67.1428571429
+Precision for Cessation Data: 0.557692307692
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.716049382716
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.439024390244
+F-Score for No Cessation Data: 0.610169491525
+******************************
+Classifier result for SVM
+Confusion Matrix: [[55 27]
+ [ 0 58]]
+Classifier Accuracy = 80.7142857143
+Precision for Cessation Data: 0.682352941176
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.811188811189
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.670731707317
+F-Score for No Cessation Data: 0.802919708029
+******************Completed End of File************
+***************log*************************
+Time logged :2013-12-05 13:09:26
+Training Data Processed
+Corpus without Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+NB - Bernoulli Model learned
+Random forest Model (tree = 25) learned
+Maximum Entropy Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[80  2]
+ [ 0 58]]
+Classifier Accuracy = 98.5714285714
+Precision for Cessation Data: 0.966666666667
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.983050847458
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.975609756098
+F-Score for No Cessation Data: 0.987654320988
+******************************
+Classifier result for NB
+Confusion Matrix: [[81  1]
+ [ 7 51]]
+Classifier Accuracy = 94.2857142857
+Precision for Cessation Data: 0.980769230769
+Recall for Cessation Data: 0.879310344828
+F-Score for Cessation Data: 0.927272727273
+Precision for No Cessation Data: 0.920454545455
+Recall for No Cessation Data: 0.987804878049
+F-Score for No Cessation Data: 0.952941176471
+******************************
+Classifier result for Random Forest
+Confusion Matrix: [[80  2]
+ [ 0 58]]
+Classifier Accuracy = 98.5714285714
+Precision for Cessation Data: 0.966666666667
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.983050847458
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.975609756098
+F-Score for No Cessation Data: 0.987654320988
+******************************
+Classifier result for Max Entropy
+Confusion Matrix: [[80  2]
+ [ 0 58]]
+Classifier Accuracy = 98.5714285714
+Precision for Cessation Data: 0.966666666667
+Recall for Cessation Data: 1.0
+F-Score for Cessation Data: 0.983050847458
+Precision for No Cessation Data: 1.0
+Recall for No Cessation Data: 0.975609756098
+F-Score for No Cessation Data: 0.987654320988
+******************Completed End of File ************
+***************log*************************
+Time logged :2013-12-05 14:33:00
+Training Data Processed
+Corpus without Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+NB - Bernoulli Model learned
+Random forest Model (tree = 25) learned
+Maximum Entropy Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[1147   87]
+ [ 178  422]]
+Classifier Accuracy = 85.5507088332
+Precision for Cessation Data: 0.829076620825
+Recall for Cessation Data: 0.703333333333
+F-Score for Cessation Data: 0.761045987376
+Precision for No Cessation Data: 0.865660377358
+Recall for No Cessation Data: 0.929497568882
+F-Score for No Cessation Data: 0.896443923408
+******************************
+Classifier result for NB
+Confusion Matrix: [[1200   34]
+ [ 356  244]]
+Classifier Accuracy = 78.7350054526
+Precision for Cessation Data: 0.877697841727
+Recall for Cessation Data: 0.406666666667
+F-Score for Cessation Data: 0.555808656036
+Precision for No Cessation Data: 0.771208226221
+Recall for No Cessation Data: 0.97244732577
+F-Score for No Cessation Data: 0.860215053763
+******************************
+Classifier result for Random Forest
+Confusion Matrix: [[1050  184]
+ [ 196  404]]
+Classifier Accuracy = 79.280261723
+Precision for Cessation Data: 0.687074829932
+Recall for Cessation Data: 0.673333333333
+F-Score for Cessation Data: 0.680134680135
+Precision for No Cessation Data: 0.842696629213
+Recall for No Cessation Data: 0.850891410049
+F-Score for No Cessation Data: 0.846774193548
+******************************
+Classifier result for Max Entropy
+Confusion Matrix: [[1147   87]
+ [ 184  416]]
+Classifier Accuracy = 85.2235550709
+Precision for Cessation Data: 0.82703777336
+Recall for Cessation Data: 0.693333333333
+F-Score for Cessation Data: 0.75430643699
+Precision for No Cessation Data: 0.861758076634
+Recall for No Cessation Data: 0.929497568882
+F-Score for No Cessation Data: 0.894346978558
+******************Completed End of File ************
+***************log*************************
+Time logged :2013-12-05 14:46:28
+Training Data Processed
+Corpus with Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+NB - Bernoulli Model learned
+Random forest Model (tree = 25) learned
+Maximum Entropy Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[1145   89]
+ [ 185  415]]
+Classifier Accuracy = 85.0599781897
+Precision for Cessation Data: 0.823412698413
+Recall for Cessation Data: 0.691666666667
+F-Score for Cessation Data: 0.751811594203
+Precision for No Cessation Data: 0.860902255639
+Recall for No Cessation Data: 0.927876823339
+F-Score for No Cessation Data: 0.893135725429
+******************************
+Classifier result for NB
+Confusion Matrix: [[1178   56]
+ [ 298  302]]
+Classifier Accuracy = 80.6979280262
+Precision for Cessation Data: 0.843575418994
+Recall for Cessation Data: 0.503333333333
+F-Score for Cessation Data: 0.630480167015
+Precision for No Cessation Data: 0.79810298103
+Recall for No Cessation Data: 0.954619124797
+F-Score for No Cessation Data: 0.869372693727
+******************************
+Classifier result for Random Forest
+Confusion Matrix: [[1159   75]
+ [ 202  398]]
+Classifier Accuracy = 84.8964013086
+Precision for Cessation Data: 0.841437632135
+Recall for Cessation Data: 0.663333333333
+F-Score for Cessation Data: 0.741845293569
+Precision for No Cessation Data: 0.851579720794
+Recall for No Cessation Data: 0.939222042139
+F-Score for No Cessation Data: 0.893256262042
+******************************
+Classifier result for Max Entropy
+Confusion Matrix: [[1153   81]
+ [ 183  417]]
+Classifier Accuracy = 85.6052344602
+Precision for Cessation Data: 0.83734939759
+Recall for Cessation Data: 0.695
+F-Score for Cessation Data: 0.75956284153
+Precision for No Cessation Data: 0.863023952096
+Recall for No Cessation Data: 0.934359805511
+F-Score for No Cessation Data: 0.897276264591
+******************Completed End of File ************
+***************log*************************
+Time logged :2013-12-05 15:47:44
+Training Data Processed
+Corpus without Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[1147   87]
+ [ 178  422]]
+Classifier Accuracy = 85.5507088332
+Precision for Cessation Data: 0.829076620825
+Recall for Cessation Data: 0.703333333333
+F-Score for Cessation Data: 0.761045987376
+Precision for No Cessation Data: 0.865660377358
+Recall for No Cessation Data: 0.929497568882
+F-Score for No Cessation Data: 0.896443923408
+******************************
+***************log*************************
+Time logged :2013-12-05 16:05:54
+Training Data Processed
+Corpus without Duplicates (Retweets)
+Unigrams Added
+Bigrams Added
+SVM Linear Model learned
+Testing Data Processed
+Testing Data has been transformed to Training data parameters
+Classifier result for SVM
+Confusion Matrix: [[1149   85]
+ [ 179  421]]
+Classifier Accuracy = 85.6052344602
+Precision for Cessation Data: 0.832015810277
+Recall for Cessation Data: 0.701666666667
+F-Score for Cessation Data: 0.76130198915
+Precision for No Cessation Data: 0.865210843373
+Recall for No Cessation Data: 0.931118314425
+F-Score for No Cessation Data: 0.896955503513
+******************************

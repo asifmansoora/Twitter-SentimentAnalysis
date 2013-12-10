@@ -4,6 +4,8 @@ from itertools import ifilterfalse
 from nltk.stem import WordNetLemmatizer
 import nltk
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+import numpy as np
 
 
 ####################################################################################################################
@@ -44,6 +46,13 @@ def clean_review(line):
        #Convert www.* or https?://* to URL
         line = re.sub('((www\.[\s]+)|(https?://[^\s]+))','URL',line)
         #print line
+        
+        #convert n't into 'not'
+        line=re.sub('(n\'t)',"not",line)
+        
+        #handling emoticons
+        line=re.sub('(:\))|(:-\))'," happysym",line)
+        line=re.sub('(:\()|(:-\()'," sadsym",line)
         
         #Convert @username to AT_USER
         line = re.sub('@[^\s]+','AT_USER',line)
@@ -95,7 +104,16 @@ def removeStopwords(wordList):
         stopwords.append('AT_USER')
         wordList[:] = ifilterfalse(lambda i: (i in stopwords) , wordList)
         return wordList
-        
+ 
+def removeTwoOrMorechars(wordList):
+          
+    for i,word in enumerate(wordList):
+        pattern = re.compile(r"(.)\1{1,}", re.DOTALL)
+        pattern.sub(r"\1\1", word)
+        wordList[i]=word
+     
+    return wordList
+       
 #Lemmantiation of the word List
 def word_Lemmantization(wordList,wordNetLemma):
  
@@ -112,8 +130,50 @@ def getBagOfWords(corpus):
     print "labels are:"
     print vectorizer.get_feature_names()
     return X.toarray()
+
+
+def fitCorpus1(corpus):
+    vectorizer = CountVectorizer(min_df=1)
+    #(ngram_range=(1, 5),analyzer="char", binary=False)
+    vectorizer.fit(corpus)
+    #print "feature list in unigram:"
+    #print vectorizer.get_feature_names()
+    return vectorizer
+
+def fitCorpus2(corpus):
+    vectorizer = CountVectorizer(analyzer='word', ngram_range=(2, 2), min_df=1)
+    #(ngram_range=(1, 5),analyzer="char", binary=False)
+    vectorizer.fit(corpus)
+    #print "feature list in bigram:"
+    #print vectorizer.get_feature_names()
+    return vectorizer
+
+
+def tranCorpus(corpus,vectorizer1,vectorizer2):
+    X1 = vectorizer1.transform(corpus)
+    #print "X features in countVect"
+    x1 = X1.toarray()
+    #print x1
+    X2 = vectorizer2.transform(corpus)
+    x2 = X2.toarray()
+    #print x2
+    x1 = np.append(x1,x2,1)
+    #print "x1 finally:"
+    #print x1
+#     j_x2 = 0
+#     for rows in x1:
+#         rows.extend(x2[j_x2])
+#         j_x2 = j_x2 +1
+#     print x1
     
- 
+    return x1
+    
+def transform_features_log(x):
+    return np.log(1+x)
+
+# To Convert into Scaled data that has zero mean and unit variance:
+def transform_features_standardize(x):
+    return preprocessing.scale(x) 
          
 
 
